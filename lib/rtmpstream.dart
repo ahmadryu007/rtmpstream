@@ -11,4 +11,8 @@ class Rtmpstream {
     final String? version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
+
+  static Future<void> launchStream({String url = ''}) async {
+    await _channel.invokeMethod('launchStream', {'url': url});
+  }
 }
