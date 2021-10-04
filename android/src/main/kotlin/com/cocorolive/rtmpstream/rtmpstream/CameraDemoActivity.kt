@@ -16,6 +16,8 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import android.content.Context
+import android.content.Intent
 
 class CameraDemoActivity : AppCompatActivity(), ConnectCheckerRtmp, SurfaceHolder.Callback {
 
@@ -32,9 +34,12 @@ class CameraDemoActivity : AppCompatActivity(), ConnectCheckerRtmp, SurfaceHolde
         surfaceView = findViewById(R.id.surfaceView)
         rtspServerCamera1 = RtmpCamera1(surfaceView, this)
         surfaceView.holder.addCallback(this)
-//        Handler(Looper.myLooper()!!).postDelayed({
-//            startStreaming("rtmp://cocorolife-api-development.inagri.asia:1935/live/KfRtdu0XWLhalWlvv5xGXPDNgNERUdkOmVUYBgPty8ZU0eXe");
-//        },2000)
+
+        val rtmpUrl:String = intent.getStringExtra("urlStram").toString()
+
+        Handler(Looper.myLooper()!!).postDelayed({
+            startStreaming(rtmpUrl);
+        },2000)
     }
 
     fun startStreaming(rtmpUrl: String) {

@@ -31,6 +31,7 @@ class RtmpstreamPlugin: FlutterPlugin, MethodCallHandler {
     } else if (call.method == "launchStream") {
       val url = call.argument<String>("url")
       val intent = Intent(context, CameraDemoActivity::class.java)
+      intent.putExtra("urlStram", url)
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
       context.startActivity(intent)
