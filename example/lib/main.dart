@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:rtmpstream/rtmpstream.dart';
 
+
 void main() {
   runApp(MyApp());
 }
@@ -14,49 +15,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
 
-    Rtmpstream.launchStream(url: 'rtmp-test.com');
+    // Rtmpstream.launchStream(url: 'rtmp-test.com');
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion =
-          await Rtmpstream.platformVersion ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
-        ),
-      ),
+    // This is used in the platform side to register the view.
+    final String viewType = 'hybrid-view-type';
+    // Pass parameters to the platform side.
+    final Map<String, dynamic> creationParams = {
+      "rtmpUrl" : "rtmp://cocorolife-api-development.inagri.asia:1935/live/PP5S3KCZxQ4l1dtfl9qgEj2E94IRBD3gX56mOUzPrGRh3E9L"
+    };
+
+    return AndroidView(
+      viewType: viewType,
+      layoutDirection: TextDirection.ltr,
+      creationParams: creationParams,
+      creationParamsCodec: const StandardMessageCodec(),
     );
   }
 }

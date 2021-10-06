@@ -10,6 +10,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
+
 /** RtmpstreamPlugin */
 class RtmpstreamPlugin: FlutterPlugin, MethodCallHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
@@ -23,6 +24,8 @@ class RtmpstreamPlugin: FlutterPlugin, MethodCallHandler {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "rtmpstream")
     channel.setMethodCallHandler(this)
     context = flutterPluginBinding.applicationContext
+
+    flutterPluginBinding.platformViewRegistry.registerViewFactory("hybrid-view-type", NativeViewFactory())
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
