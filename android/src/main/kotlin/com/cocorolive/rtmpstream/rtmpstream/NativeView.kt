@@ -23,7 +23,11 @@ internal class NativeView(context: Context, id: Int, creationParams: Map<String?
     }
 
 
-    override fun dispose() {}
+    override fun dispose() {
+        if (rtmpServer != null) {
+            rtmpServer.stopStreaming()
+        }
+    }
 
     init {
         surfaceView = view.findViewById<SurfaceView>(R.id.surfaceView)
