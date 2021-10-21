@@ -44,6 +44,7 @@ class RtmpServer : ConnectCheckerRtmp, SurfaceHolder.Callback {
     }
 
     fun initSurfaceView(context: Context) {
+        Log.d("STREAMING", "initSurfaceView")
         folder = File(context.getExternalFilesDir(null)!!.absolutePath + "/rtmp-rtsp-stream-client-java")
         rtspServerCamera1 = RtmpCamera1(surfaceView, this)
         rtspServerCamera1.switchCamera()
@@ -87,40 +88,50 @@ class RtmpServer : ConnectCheckerRtmp, SurfaceHolder.Callback {
     }
 
     override fun onAuthErrorRtmp() {
+        Log.d("STREAMING", "onAuthErrorRtmp")
         activity.runOnUiThread {
             rtspServerCamera1.stopStream()
         }
     }
 
     override fun onAuthSuccessRtmp() {
+        Log.d("STREAMING", "onAuthSuccessRtmp")
         activity.runOnUiThread {
         }
     }
 
     override fun onConnectionFailedRtmp(reason: String) {
+        Log.d("STREAMING", "onConnectionFailedRtmp")
         activity.runOnUiThread {
             rtspServerCamera1.stopStream()
         }
     }
 
     override fun onConnectionStartedRtmp(rtmpUrl: String) {
+        Log.d("STREAMING", "onConnectionStartedRtmp")
     }
 
     override fun onConnectionSuccessRtmp() {
+        Log.d("STREAMING", "onConnectionSuccessRtmp")
     }
 
     override fun onDisconnectRtmp() {
+        Log.d("STREAMING", "onDisconnectRtmp")
         activity.runOnUiThread {
         }
     }
 
     override fun onNewBitrateRtmp(bitrate: Long) {
+        Log.d("STREAMING", "onNewBitrateRtmp")
     }
 
-    override fun surfaceCreated(holder: SurfaceHolder) {}
+    override fun surfaceCreated(holder: SurfaceHolder) {
+        Log.d("STREAMING", "onConnectionSuccessRtmp")
+    }
 
 
     override fun surfaceChanged(surfaceHolder: SurfaceHolder, i: Int, i1: Int, i2: Int) {
+        Log.d("STREAMING", "surfaceChanged")
         rtspServerCamera1.startPreview()
     }
 

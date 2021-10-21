@@ -28,6 +28,7 @@ internal class NativeView(context: Context, id: Int, creationParams: Map<String?
     }
 
     init {
+        Log.d("STREAMING", "init NativeView")
         surfaceView = view.findViewById<SurfaceView>(R.id.surfaceView)
         rtmpServer = RtmpServer(Activity(), surfaceView)
         rtmpServer.initSurfaceView(context.applicationContext)
