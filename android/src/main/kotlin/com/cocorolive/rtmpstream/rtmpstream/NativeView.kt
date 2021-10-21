@@ -24,9 +24,7 @@ internal class NativeView(context: Context, id: Int, creationParams: Map<String?
 
 
     override fun dispose() {
-        if (rtmpServer != null) {
-            rtmpServer.stopStreaming()
-        }
+        //rtmpServer.stopStreaming()
     }
 
     init {
