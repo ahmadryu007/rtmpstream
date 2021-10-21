@@ -126,15 +126,18 @@ class RtmpServer : ConnectCheckerRtmp, SurfaceHolder.Callback {
 
     override fun surfaceDestroyed(surfaceHolder: SurfaceHolder) {
         Log.d("STREAMING", "destroy")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            if (rtspServerCamera1.isRecording) {
-                rtspServerCamera1.stopRecord()
-                currentDateAndTime = ""
-            }
-        }
-        if (rtspServerCamera1.isStreaming) {
-            rtspServerCamera1.stopStream()
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+//            if (rtspServerCamera1.isRecording) {
+//
+//            }
+//        }
+//        if (rtspServerCamera1.isStreaming) {
+//
+//        }
+
+        rtspServerCamera1.stopRecord()
+        currentDateAndTime = ""
+        rtspServerCamera1.stopStream()
         rtspServerCamera1.stopPreview()
     }
 }
