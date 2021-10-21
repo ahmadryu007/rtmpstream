@@ -9,8 +9,7 @@ import android.view.View
 import android.widget.TextView
 import io.flutter.plugin.platform.PlatformView
 import android.content.ContextWrapper
-
-
+import android.util.Log
 
 
 internal class NativeView(context: Context, id: Int, creationParams: Map<String?, Any?>?) : PlatformView {
@@ -25,6 +24,7 @@ internal class NativeView(context: Context, id: Int, creationParams: Map<String?
 
     override fun dispose() {
         //rtmpServer.stopStreaming()
+        Log.d("STREAMING", "dispose NativeView")
     }
 
     init {
