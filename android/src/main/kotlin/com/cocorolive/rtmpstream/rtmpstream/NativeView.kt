@@ -10,11 +10,12 @@ import android.widget.TextView
 import io.flutter.plugin.platform.PlatformView
 import android.content.ContextWrapper
 import android.util.Log
+import com.pedro.rtplibrary.view.OpenGlView
 
 
 internal class NativeView(context: Context, id: Int, creationParams: Map<String?, Any?>?) : PlatformView {
     private var view: View = LayoutInflater.from(context).inflate(R.layout.activity_camera_demo, null)
-    var surfaceView: SurfaceView
+    var openGLSurfaceView: OpenGlView
     var rtmpServer: RtmpServer
 
     override fun getView(): View {
@@ -29,9 +30,9 @@ internal class NativeView(context: Context, id: Int, creationParams: Map<String?
 
     init {
         Log.d("STREAMING", "init NativeView")
-        surfaceView = view.findViewById<SurfaceView>(R.id.surfaceView)
-        rtmpServer = RtmpServer(Activity(), surfaceView)
-        rtmpServer.initSurfaceView(context.applicationContext)
+        openGLSurfaceView = view.findViewById<OpenGlView>(R.id.surfaceView)
+        rtmpServer = RtmpServer(Activity(), openGLSurfaceView)
+        rtmpServer.initOpenGL(context.applicationContext)
         rtmpServer.startStreaming(creationParams?.get("rtmpUrl") as String)
 
     }

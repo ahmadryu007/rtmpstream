@@ -11,16 +11,4 @@
     <uses-feature android:name="android.hardware.camera2.full" />
     <uses-feature android:name="android.hardware.camera2.autofocus" />
 
-
-    <application
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".CameraDemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
 </manifest>

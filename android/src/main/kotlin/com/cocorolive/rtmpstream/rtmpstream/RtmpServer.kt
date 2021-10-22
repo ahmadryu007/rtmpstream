@@ -25,15 +25,15 @@ class RtmpServer : ConnectCheckerRtmp, SurfaceHolder.Callback {
     private lateinit var folder: File
     private lateinit var rtspServerCamera1: RtmpCamera1
 
-//    constructor(activity: Activity, openGlView: OpenGlView) {
-//        this.openGlView = openGlView
-//        this.activity = activity
-//    }
-
-    constructor(activity: Activity, surfaceView: SurfaceView) {
+    constructor(activity: Activity, openGlView: OpenGlView) {
+        this.openGlView = openGlView
         this.activity = activity
-        this.surfaceView = surfaceView
     }
+
+//    constructor(activity: Activity, surfaceView: SurfaceView) {
+//        this.activity = activity
+//        this.surfaceView = surfaceView
+//    }
 
 
     fun initOpenGL(context: Context) {
